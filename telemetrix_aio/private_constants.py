@@ -137,7 +137,7 @@ class PrivateConstants:
     DHT_DATA = 0
     DHT_ERROR = 1
 
-# feature masks
+    # feature masks
     ONEWIRE_FEATURE = 0x01
     DHT_FEATURE = 0x02
     STEPPERS_FEATURE = 0x04

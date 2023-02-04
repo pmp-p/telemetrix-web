@@ -21,7 +21,7 @@ import sys
 import serial
 import time
 
-LF = 0x0a
+LF = 0x0A
 
 
 # noinspection PyStatementEffect,PyUnresolvedReferences,PyUnresolvedReferences
@@ -32,24 +32,24 @@ class TelemetrixAioSerial:
     It provides a 'futures' interface to make Pyserial compatible with asyncio
     """
 
-    def __init__(self, com_port='/dev/ttyACM0', baud_rate=115200, sleep_tune=.0001,
-                 telemetrix_aio_instance=None, close_loop_on_error=True):
+    def __init__(
+        self, com_port="/dev/ttyACM0", baud_rate=115200, sleep_tune=0.0001, telemetrix_aio_instance=None, close_loop_on_error=True
+    ):
 
         """
         This is the constructor for the aio serial handler
 
         :param com_port: Com port designator
-        
+
         :param baud_rate: UART baud rate
-        
+
         :param telemetrix_aio_instance: reference to caller
-        
+
         :return: None
         """
         # print('Initializing Arduino - Please wait...', end=" ")
         sys.stdout.flush()
-        self.my_serial = serial.Serial(com_port, baud_rate, timeout=1,
-                                       writeTimeout=1)
+        self.my_serial = serial.Serial(com_port, baud_rate, timeout=1, writeTimeout=1)
 
         self.com_port = com_port
         self.sleep_tune = sleep_tune
@@ -131,7 +131,7 @@ class TelemetrixAioSerial:
                 # if not, relinquish control back to the event loop through the
                 # short sleep
                 if not self.my_serial.in_waiting:
-                    await asyncio.sleep(self.sleep_tune*2)
+                    await asyncio.sleep(self.sleep_tune * 2)
 
                 # data is available.
                 # set the flag to true so that the future can "wait" until the
